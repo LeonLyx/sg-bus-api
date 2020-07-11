@@ -3,6 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
+
+	"github.com/LeonLyx/sg-bus-api/api"
 )
 
 func main() {
@@ -10,7 +12,7 @@ func main() {
 	flag.StringVar(&accountKey, "account-key", "your-account-key", "required for endpoint access")
 	flag.Parse()
 
-	client := NewBusAPIClient(accountKey)
+	client := api.NewBusAPIClient(accountKey)
 	busArrival, err := client.GetBusArrival("83139", "15")
 	if err != nil {
 		fmt.Printf("error getting bus arrival, %s\n", err.Error())
